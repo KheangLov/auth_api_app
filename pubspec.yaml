@@ -14,6 +14,7 @@ dependencies:
   shared_preferences: any
   flutter_launcher_icons: ^0.7.5
   cupertino_icons: ^0.1.2
+  tinder_card: ^0.1.1
 
 dev_dependencies:
   flutter_test:
@@ -25,7 +26,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  assets:
+    - IMG_7848.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

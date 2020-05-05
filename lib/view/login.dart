@@ -26,10 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.blue, Colors.teal],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
+          color: Colors.black87
         ),
         child: _isLoading ? Center(child: CircularProgressIndicator()) : ListView(
           children: <Widget>[
@@ -49,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       'password': pass
     };
     var response = await http.post(
-        "http://192.168.1.12:5000/api/auth/login",
+        "http://192.168.1.8:5000/api/auth/login",
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'}
     );
@@ -88,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                 signIn(emailController.text, passwordController.text);
               },
               elevation: 0.0,
-              color: Colors.purple,
+              color: Colors.black54,
               child: Text("LOGIN", style: TextStyle(color: Colors.white70)),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               padding: EdgeInsets.only(top: 15, bottom: 15),
@@ -106,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                     (Route<dynamic> route) => false
                 );
               },
-              color: Colors.greenAccent,
+              color: Colors.black87,
               child: Text("GO TO REGISTER", style: TextStyle(color: Colors.white70)),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               padding: EdgeInsets.only(top: 15, bottom: 15),

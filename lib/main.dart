@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:authapi/view/login.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tinder_card/tinder_card.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MainPage(),
       theme: ThemeData(
-        accentColor: Colors.white70
+        accentColor: Colors.black12
       ),
     );
   }
@@ -54,51 +56,61 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     userData();
     return Scaffold(
+      backgroundColor: Color.fromARGB(200, 40, 40, 40),
       appBar: AppBar(
+        backgroundColor: Colors.black87,
         title: Text("Auth API", style: TextStyle(color: Colors.white)),
         actions: <Widget>[
           FlatButton(
             onPressed: () {
               sharedPreferences.clear();
               sharedPreferences.commit();
-              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => LoginPage()), (Route<dynamic> route) => false);
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => LoginPage()
+                ),
+                (Route<dynamic> route) => false
+              );
             },
             child: Text("Log Out", style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
-      body: Center(child: Text("Main Page")),
+      body: Container(
+        child: TinderSwapCard(
+          demoProfiles: demoProfiles,
+          myCallback: (decision) {},
+        ),
+      ),
       drawer: Drawer(
-        child: new ListView(
-              children: <Widget>[
-                new UserAccountsDrawerHeader(
-                  accountName: new Text(_user.isNotEmpty && _user.containsKey('name') ? _user['name'] : ''),
-                  accountEmail: new Text(_user.isNotEmpty && _user.containsKey('email') ? _user['email'] : ''),
-                  // decoration: new BoxDecoration(
-                  //   image: new DecorationImage(
-                  //     fit: BoxFit.fill,
-                  //    // image: AssetImage('img/estiramiento.jpg'),
-                  //   )
-                  // ),
-                ),
-                new Divider(),
-                // new ListTile(
-                //   title: new Text("Add data"),
-                //   trailing: new Icon(Icons.fitness_center),
-                //   onTap: () => Navigator.of(context).push(new MaterialPageRoute(
-                //     builder: (BuildContext context) => AddData(),
-                //   )),
-                // ),
-                // new Divider(),
-                // new ListTile(
-                //   title: new Text("Mostrar listado"),
-                //   trailing: new Icon(Icons.help),
-                //   onTap: () => Navigator.of(context).push(new MaterialPageRoute(
-                //     builder: (BuildContext context) => ShowData(),
-                //   )),
-                // ),
-              ],
-            ),
+        child: Container(
+          color: Colors.black87,
+          child: ListView(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                  ),
+                  accountName: Text(_user.isNotEmpty && _user.containsKey('name') ? _user['name'] : ''),
+                  accountEmail: Text(_user.isNotEmpty && _user.containsKey('email') ? _user['email'] : ''),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundColor: Colors.black54,
+                    backgroundImage: ExactAssetImage('assets/IMG_7848.png'),
+                  )
+              ),
+              ListTile(
+                title: Text("Home", style: TextStyle(color: Colors.white70)),
+                trailing: Icon(Icons.arrow_right),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text("About", style: TextStyle(color: Colors.white70)),
+                trailing: Icon(Icons.arrow_right),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -112,3 +124,43 @@ class _MainPageState extends State<MainPage> {
     }
   }
 }
+
+class Profile {
+  final List<String> photos;
+  final String name;
+  final String bio;
+
+  Profile({this.photos, this.name, this.bio});
+}
+
+// This widget will be passed as Top Card's Widget.
+final List<Profile> demoProfiles = [
+  new Profile(
+    photos: [
+      "assets/IMG_7848.png",
+      "assets/IMG_7848.png",
+      "assets/IMG_7848.png",
+      "assets/IMG_7848.png",
+      "assets/IMG_7848.png",
+      "assets/IMG_7848.png",
+    ],
+    name: "Aneesh G",
+    bio: "This is the person you want",
+  ),
+  new Profile(
+    photos: [
+      "assets/IMG_7848.png",
+      "assets/IMG_7848.png",
+    ],
+    name: "Amanda Tylor",
+    bio: "You better swpe left",
+  ),
+  new Profile(
+    photos: [
+      "assets/IMG_7848.png",
+      "assets/IMG_7848.png",
+    ],
+    name: "Godson Mathew",
+    bio: "You better swpe left",
+  ),
+];

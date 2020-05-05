@@ -74,6 +74,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "fluttery_dart2",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/fluttery_dart2-0.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "http",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.0+3",
       "packageUri": "lib/",
@@ -182,6 +188,12 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "tinder_card",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/tinder_card-0.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "typed_data",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.1.6",
       "packageUri": "lib/",
@@ -212,7 +224,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2020-05-03T10:26:01.579597Z",
+  "generated": "2020-05-05T18:20:59.138131Z",
   "generator": "pub",
   "generatorVersion": "2.7.2"
 }

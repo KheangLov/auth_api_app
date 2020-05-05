@@ -81,6 +81,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttery_dart2:
+    dependency: transitive
+    description:
+      name: fluttery_dart2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.9"
   http:
     dependency: "direct main"
     description:
@@ -205,6 +212,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.11"
+  tinder_card:
+    dependency: "direct main"
+    description:
+      name: tinder_card
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   typed_data:
     dependency: transitive
     description:

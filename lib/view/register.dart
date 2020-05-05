@@ -36,10 +36,7 @@ class _RegisterPageState extends State<RegisterPage> {
       key: _scaffoldKey,
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Colors.blue, Colors.teal],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
+          color: Colors.black87,
         ),
         child: _isLoading ? Center(child: CircularProgressIndicator()) : ListView(
           children: <Widget>[
@@ -59,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
       'name': name
     };
     var response = await http.post(
-        "http://192.168.1.12:5000/api/auth/register",
+        "http://192.168.1.8:5000/api/auth/register",
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'}
     );
@@ -106,7 +103,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 return false;
               },
               elevation: 0.0,
-              color: Colors.purple,
+              color: Colors.black87,
               child: Text("REGISTER", style: TextStyle(color: Colors.white70)),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               padding: EdgeInsets.only(top: 15, bottom: 15),
@@ -124,7 +121,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     (Route<dynamic> route) => false
                 );
               },
-              color: Colors.greenAccent,
+              color: Colors.black87,
               child: Text("GO TO LOGIN", style: TextStyle(color: Colors.white70)),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
               padding: EdgeInsets.only(top: 15, bottom: 15),
