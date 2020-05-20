@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:authapi/view/register.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -17,7 +16,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   bool _isLoading = false;
 
   @override
@@ -46,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       'password': pass
     };
     var response = await http.post(
-        "http://192.168.1.8:5000/api/auth/login",
+        "http://192.168.1.6:3000/api/auth/login",
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'}
     );
@@ -57,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
         _isLoading = false;
       });
       sharedPreferences.setString("token", resData['token']);
-      sharedPreferences.setString("user", resData['user']);
+      sharedPreferences.setString("user", jsonEncode(resData['user']));
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => MainPage()), (Route<dynamic> route) => false);
     }
     else {

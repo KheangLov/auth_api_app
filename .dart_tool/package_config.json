@@ -62,22 +62,34 @@
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_cupertino_date_picker",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_cupertino_date_picker-1.0.24",
+      "packageUri": "lib/",
+      "languageVersion": "1.19"
+    },
+    {
+      "name": "flutter_datetime_picker",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.2.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "flutter_launcher_icons",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.7.5",
       "packageUri": "lib/",
       "languageVersion": "2.2"
     },
     {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/src/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "2.2"
-    },
-    {
-      "name": "fluttery_dart2",
-      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/fluttery_dart2-0.0.9",
-      "packageUri": "lib/",
-      "languageVersion": "2.0"
     },
     {
       "name": "http",
@@ -94,6 +106,18 @@
     {
       "name": "image",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "image_picker",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.6+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
+      "name": "image_picker_platform_interface",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.0"
     },
@@ -122,10 +146,28 @@
       "languageVersion": "2.1"
     },
     {
+      "name": "permission_handler",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-5.0.0+hotfix.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.7"
+    },
+    {
+      "name": "permission_handler_platform_interface",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
+    },
+    {
       "name": "petitparser",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.4"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
     },
     {
       "name": "quiver",
@@ -188,12 +230,6 @@
       "languageVersion": "2.2"
     },
     {
-      "name": "tinder_card",
-      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/tinder_card-0.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.1"
-    },
-    {
       "name": "typed_data",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/typed_data-1.1.6",
       "packageUri": "lib/",
@@ -221,10 +257,10 @@
       "name": "authapi",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.1"
+      "languageVersion": "2.2"
     }
   ],
-  "generated": "2020-05-05T18:20:59.138131Z",
+  "generated": "2020-05-14T03:34:20.250282Z",
   "generator": "pub",
   "generatorVersion": "2.7.2"
 }

@@ -1,15 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:authapi/view/login.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../main.dart';
-
-
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:image_picker/image_picker.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -17,16 +14,28 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
   bool _isLoading = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  void _showScaffold(String message) {
+  void _showScaffold(String message, String type) {
     _scaffoldKey.currentState.showSnackBar(
       SnackBar(
         content: Text(message),
+        backgroundColor: type == 'error' ? Colors.red : Colors.green,
       )
     );
+  }
+
+  String _valGender;
+  List _listGender = ["Male", "Female"];
+  String _date = "Not set";
+  File _image;
+
+  Future getImage() async {
+    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
   }
 
   @override
@@ -42,6 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
           children: <Widget>[
             headerSection(),
             textSection(),
+            dateDrop(),
             buttonSection(),
           ],
         ),
@@ -49,16 +59,12 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  signUp(String email, pass, name) async {
-    Map data = {
-      'email': email,
-      'password': pass,
-      'name': name
-    };
+  signUp(Map data) async {
+    print(data);
     var response = await http.post(
-        "http://192.168.1.8:5000/api/auth/register",
-        body: jsonEncode(data),
-        headers: {'Content-Type': 'application/json'}
+      "http://192.168.1.6:3000/api/auth/register",
+      body: jsonEncode(data),
+      headers: {'Content-Type': 'application/json'}
     );
     var resData = json.decode(response.body);
     print(resData);
@@ -66,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
       setState(() {
         _isLoading = false;
       });
-      _showScaffold(resData['message']);
+      _showScaffold(resData['message'], 'error');
     }
     else {
       setState(() {
@@ -93,13 +99,21 @@ class _RegisterPageState extends State<RegisterPage> {
             child: RaisedButton(
               onPressed: emailController.text == "" || passwordController.text == "" ? null : () {
                 if (passwordController.text != passwordConfirmController.text) {
-                  _showScaffold("Wrong password confirmation!");
+                  _showScaffold("Wrong password confirmation!", 'error');
                   return false;
                 }
                 setState(() {
                   _isLoading = true;
                 });
-                signUp(emailController.text, passwordController.text, nameController.text);
+                Map data = {
+                  'email': emailController.text,
+                  'password': passwordController.text,
+                  'first_name': fnameController.text,
+                  'last_name': lnameController.text,
+                  'gender': _valGender,
+                  'dob': _date,
+                };
+                signUp(data);
                 return false;
               },
               elevation: 0.0,
@@ -115,10 +129,10 @@ class _RegisterPageState extends State<RegisterPage> {
             child: RaisedButton(
               onPressed: () {
                 Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => LoginPage()
-                    ),
-                    (Route<dynamic> route) => false
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => LoginPage()
+                  ),
+                  (Route<dynamic> route) => false
                 );
               },
               color: Colors.black87,
@@ -132,7 +146,8 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  final TextEditingController nameController = new TextEditingController();
+  final TextEditingController fnameController = new TextEditingController();
+  final TextEditingController lnameController = new TextEditingController();
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController passwordConfirmController = new TextEditingController();
@@ -142,13 +157,56 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
       child: Column(
         children: <Widget>[
+          CircleAvatar(
+            radius: 90,
+            backgroundColor: Colors.white70,
+            child: CircleAvatar(
+              radius: 85,
+              backgroundColor: Colors.black87,
+              backgroundImage: _image != null ? ExactAssetImage(_image.path)  : NetworkImage("https://flutter-flask.s3-ap-southeast-1.amazonaws.com/laravel/images/1589343836avatar_profile_user_music_headphones_shirt_cool-512.png"),
+              child: ClipOval(
+                child: Material(
+                  color: Colors.transparent, // button color
+                  child: InkWell(
+                    splashColor: Colors.white70, // inkwell color
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: RaisedButton(
+                        color: Color.fromARGB(0, 0, 0, 0),
+                        onPressed: getImage,
+                        child: Icon(
+                          Icons.camera_alt,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 30.0),
           TextFormField(
-            controller: nameController,
+            controller: fnameController,
             cursorColor: Colors.white,
             style: TextStyle(color: Colors.white70),
             decoration: InputDecoration(
               icon: Icon(Icons.person, color: Colors.white70),
-              hintText: "Name",
+              hintText: "Firstname",
+              border: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white70)),
+              hintStyle: TextStyle(color: Colors.white70),
+            ),
+          ),
+          SizedBox(height: 30.0),
+          TextFormField(
+            controller: lnameController,
+            cursorColor: Colors.white,
+            style: TextStyle(color: Colors.white70),
+            decoration: InputDecoration(
+              icon: Icon(Icons.person, color: Colors.white70),
+              hintText: "Lastname",
               border: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white70)),
               hintStyle: TextStyle(color: Colors.white70),
             ),
@@ -190,6 +248,88 @@ class _RegisterPageState extends State<RegisterPage> {
               border: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white70)),
               hintStyle: TextStyle(color: Colors.white70),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container dateDrop() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 0),
+      child: Column(
+        children: <Widget>[
+          DropdownButton(
+            isExpanded: true,
+            hint: Text("Select The Gender", style: TextStyle(color: Colors.white70)),
+            value: _valGender,
+            items: _listGender.map((value) {
+              return DropdownMenuItem(
+                child: Text(value, style: TextStyle(color: Colors.black87)),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              setState(() {
+                _valGender = value;
+              });
+            },
+          ),
+          RaisedButton(
+            elevation: 4.0,
+            onPressed: () {
+              DatePicker.showDatePicker(
+                context,
+                theme: DatePickerTheme(
+                  containerHeight: 210.0,
+                ),
+                showTitleActions: true,
+                maxTime: DateTime(2022, 12, 31), onConfirm: (date) {
+                  String theDate = '${date.year}-${date.month}-${date.day}';
+                  setState(() {
+                    _date = theDate;
+                  });
+                },
+                currentTime: DateTime.now(), locale: LocaleType.en
+              );
+            },
+            child: Container(
+              color: null,
+              alignment: Alignment.center,
+              height: 50.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.date_range,
+                              size: 18.0,
+                              color: Colors.white70,
+                            ),
+                            Text(
+                              " $_date",
+                              style: TextStyle(
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Icon(
+                      Icons.arrow_drop_down
+                  )
+                ],
+              ),
+            ),
+            color: Color.fromARGB(200, 40, 40, 40),
           ),
         ],
       ),

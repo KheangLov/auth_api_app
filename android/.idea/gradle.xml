@@ -9,7 +9,10 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.7/android" />
+            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.6+1/android" />
             <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.4+8/android" />
+            <option value="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/tinder_card-0.1.1/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>

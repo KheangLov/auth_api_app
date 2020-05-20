@@ -1,4 +1,4 @@
-#Wed May 06 00:02:27 ICT 2020
-base.0=D\:\\flutter\\auth_api\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
+#Thu May 14 16:00:37 ICT 2020
+base.0=D\:\\flutter\\auth_api\\build\\app\\intermediates\\dex\\debug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

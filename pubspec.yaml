@@ -5,7 +5,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -14,7 +14,10 @@ dependencies:
   shared_preferences: any
   flutter_launcher_icons: ^0.7.5
   cupertino_icons: ^0.1.2
-  tinder_card: ^0.1.1
+  flutter_cupertino_date_picker: ^1.0.24
+  flutter_datetime_picker: 1.2.5
+  image_picker: ^0.6.1+4
+  permission_handler: ^5.0.0+hotfix.5
 
 dev_dependencies:
   flutter_test:

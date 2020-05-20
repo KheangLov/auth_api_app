@@ -4,7 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" group="android" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="android/app" />
+      <module fileurl="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.7/android/flutter_plugin_android_lifecycle.iml" filepath="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.7/android/flutter_plugin_android_lifecycle.iml" group="android/flutter_plugin_android_lifecycle" />
+      <module fileurl="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.6+1/android/image_picker.iml" filepath="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.6+1/android/image_picker.iml" group="android/image_picker" />
       <module fileurl="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.4+8/android/shared_preferences.iml" filepath="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.4+8/android/shared_preferences.iml" group="android/shared_preferences" />
+      <module fileurl="file://C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/tinder_card-0.1.1/android/tinder_card.iml" filepath="C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/tinder_card-0.1.1/android/tinder_card.iml" group="android/tinder_card" />
     </modules>
   </component>
 </project>
