@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
       'password': pass
     };
     var response = await http.post(
-        "http://192.168.1.6:3000/api/auth/login",
+        "http://192.168.43.139:3000/api/auth/login",
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'}
     );

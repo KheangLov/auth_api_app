@@ -62,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
   signUp(Map data) async {
     print(data);
     var response = await http.post(
-      "http://192.168.1.6:3000/api/auth/register",
+      "http://192.168.43.139:3000/api/auth/register",
       body: jsonEncode(data),
       headers: {'Content-Type': 'application/json'}
     );

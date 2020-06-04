@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
 
   getEmployees() async {
     final response = await http.get(
-      'http://192.168.1.6:3000/api/employees',
+      'http://192.168.43.139:3000/api/employees',
       headers: {HttpHeaders.authorizationHeader: 'Bearer $_token'},
     );
     final responseJson = json.decode(response.body.toString());
